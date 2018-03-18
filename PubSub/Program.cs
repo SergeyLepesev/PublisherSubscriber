@@ -7,16 +7,16 @@ namespace PubSub
         static void Main(string[] args)
         {
             var stack = new Stack<int>();
-            var sub = new Sub<int>(stack);
+            new Sub().Subscribe(stack);
             stack.Push(1);
             stack.Pop();
             Console.ReadKey();
 
         }
 
-        public class Sub<T>
+        public class Sub
         {
-            public Sub(Stack<T> stack)
+            public void Subscribe<T>(Stack<T> stack)
             {
                 stack.NotifyPop += ConsoleNotifyPop;
                 stack.NotifyPush += ConsoleNotifyPush;
